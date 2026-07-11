@@ -35,13 +35,12 @@ export default function CadastroPage() {
     setCarregando(false);
 
     if (error) {
-      setErro(
-        error.message.includes("already registered")
-          ? "Esse e-mail já está cadastrado."
-          : "Não foi possível criar sua conta. Tente novamente."
-      );
-      return;
-    }
+  console.error("ERRO SUPABASE:", error);
+
+  setErro(error.message);
+
+  return;
+}
 
     // Se a confirmação de e-mail estiver desativada no Supabase, já existe sessão.
     if (data.session) {
